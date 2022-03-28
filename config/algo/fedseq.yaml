@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - fedavg
+  - optim@algo.params.evaluator: sgd
+
+algo:
+  type: fedseq
+  classname: FedSeq
+  params:
+    clustering:
+      classnames_eval: [] # for these save_statistics is True
+      measures_eval: []
+      disomogeneity_measures: ["gini", "kullback"] #measures that apply only to probability distributions
+      classname: GreedyClusterMaker
+      max_clients: 11
+      min_examples: 800
+      measure: kullback
+      save_statistics: True
+      verbose: False
+    evaluator:
+      extract_eval : []
+      epochs: 10
+      extract: "confidence" # classifierAll classifierLast or classifierLast2 or confidence or classifierAll
+      extract_prop_distr: ["confidence"] #methods that extract probability distributions
+      variance_explained: 0.9 #percentage of variance explained
+      model_info:
+        type: lenet
+        classname: LeNet
+        feature_extract: False #False means finetuning
+        pretrained: False
+    training:
+      sequential_rounds: 1 #number of sequential iterations through superclients' clients
+      clients_local_epoch: ${algo.params.common.E} # number of local iteration for each client
+      shuffle_sp_clients: True
+      clients_dropout: ${algo.params.clients_dropout}
+      save_memory: ${algo.params.client.args.save_memory}
+    save_models: False

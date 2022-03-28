@@ -1,0 +1,6 @@
+# @package _global_
+loss:
+  type: crossentropy
+  classname: CrossEntropyLoss
+  params:
+    ignore_index: -100 #it is already the default argument

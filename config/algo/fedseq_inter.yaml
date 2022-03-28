@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - fedseq
+algo:
+  type: fedseq_inter
+  classname: FedSeqInter
+  params:
+    aggregation_period: num_superclients

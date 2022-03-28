@@ -1,0 +1,19 @@
+fit_iterations: 1
+result_aggregation_method : "mean" #or top-1
+seed: 2021
+confidence: 0.95
+
+#folder containing the result to aggregate
+folder: "${env:PWD}/output"
+functions: ["models_distance", "aggregate_fits", "aggregate_superclient_statistics"]
+distance_metrics: ["cosine_dist", "eucledian_dist"]
+
+root: null
+defaults:
+  - hydra/hydra_logging: disabled
+  - hydra/job_logging: disabled
+
+hydra:  
+  run:    
+    dir: .
+  output_subdir: null

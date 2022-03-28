@@ -1,0 +1,19 @@
+# @package _global_
+defaults:
+  - fedbase
+  - optim@algo.params: scaf
+  - loss@algo.params: crossentropy
+
+algo:
+  type: scaffold
+  classname: FedAvg
+  params:
+    center_server:
+      classname: SCAFFOLDCenterServer
+      args:
+        num_clients: ${algo.params.common.K}
+    client:
+      classname: SCAFFOLDClient
+      args: {}
+
+    aggregation_policy: weighted

@@ -1,0 +1,32 @@
+defaults:
+  - model: lenet
+  - algo: ???
+  - _self_
+
+n_round: ???
+device: 'cuda'
+dataset: ???
+
+seed: 2021
+output_suffix: ""
+do_train: True
+reload_checkpoint: False
+exp_name: ${algo.type}/${now:%Y-%m-%d_%H-%M-%S}
+
+root: ${oc.env:PWD}
+savedir: ${oc.env:PWD}/output/${exp_name}
+
+hydra:
+  run:
+    dir: ${oc.env:PWD}/output/${exp_name}
+  sweep:
+    # Output directory for sweep runs
+    dir: ${oc.env:PWD}/output/${exp_name}/${hydra.job.name}
+    # Output sub directory for sweep runs.
+    subdir: ${hydra.job.num}_${hydra.job.id}
+  job_logging:
+    handlers:
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.job.name}${output_suffix}.log

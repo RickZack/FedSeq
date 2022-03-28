@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - fedseq_inter
+
+algo:
+  type: fedseq_inter_dyn
+  params:
+    alpha: 1
+    center_server:
+      classname: FedDynCenterServer
+      args:
+        num_clients: ${algo.params.common.K}
+        alpha: ${algo.params.alpha}
+    client:
+      classname: FedDynClient
+      args:
+        alpha: ${algo.params.alpha}

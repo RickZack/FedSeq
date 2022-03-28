@@ -1,0 +1,7 @@
+# @package _global_
+defaults:
+  - fedavg
+  - override optim@algo.params: pgd
+
+algo:
+  type: fedprox

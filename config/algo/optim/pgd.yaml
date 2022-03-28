@@ -1,0 +1,9 @@
+# @package _global_
+optim:
+  type: pgd
+  classname: PGD
+  args:
+    lr: 0.01
+    momentum: 0
+    weight_decay: 4e-4
+    mu: 0.01

@@ -1,0 +1,6 @@
+# @package _global_
+model:
+  type: lenet
+  classname: LeNet
+  feature_extract: False #False means finetuning
+  pretrained: False

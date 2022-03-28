@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - optim@algo.params: sgd
+  - loss@algo.params: crossentropy
+
+
+algo:
+  type: centralized
+  classname: Centralized
+  params:
+    batch_size: 64
+    save_checkpoint_period: 10
+    analyze_container: {
+      modules: {
+        server: [
+          {
+            classname: ServerAnalyzer,
+            args: { print_period: 1, event: 'validation' }
+
+          }
+        ]
+      },
+      verbose: True
+    }

@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - fedavg
+
+algo:
+  type: fairavg
+  classname: FedAvg
+  params:
+    aggregation_policy: uniform

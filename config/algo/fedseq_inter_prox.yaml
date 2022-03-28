@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - fedseq_inter
+  - override optim@algo.params: pgd
+
+algo:
+  type: fedseq_inter_prox
+  params:
+    optim:
+      args:
+        mu: 1

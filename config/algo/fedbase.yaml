@@ -1,0 +1,35 @@
+# @package _global_
+algo:
+  type: fedbase
+  classname: FedBase
+  params:
+    common:
+      E: 1
+      K: 500
+      C: 0.2
+      B: 64
+      alpha: 0
+      max_iter_dirichlet: 100
+      rebalance: False
+    center_server:
+      classname: ??? # must be provided by specialized methods
+      args: {}
+    client:
+      classname: ???
+      args: {save_memory: True}
+    aggregation_policy: ??? # weighted or uniform
+    save_models: False
+    clients_dropout: 0
+    save_checkpoint_period: 100
+    analyze_container: {
+      modules: {
+        server: [
+          {
+            classname: ServerAnalyzer,
+            args: {event: 'validation', print_period: 1}
+          }
+        ]
+      },
+      verbose: False
+    }
+

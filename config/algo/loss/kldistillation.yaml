@@ -1,0 +1,7 @@
+# @package _global_
+loss:
+  type: kldistillation
+  classname: KlDistillationLoss
+  params:
+    alpha: 0.5
+    T: 2

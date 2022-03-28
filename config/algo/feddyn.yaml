@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - fedavg
+  - override optim@algo.params: sgd
+
+algo:
+  type: feddyn
+  params:
+    alpha: 0.1
+    center_server:
+      classname: FedDynCenterServer
+      args:
+        num_clients: ${algo.params.common.K}
+        alpha: ${algo.params.alpha}
+    client:
+      classname: FedDynClient
+      args:
+        alpha: ${algo.params.alpha}
